@@ -62,8 +62,8 @@ async def account_login(bot: Client, m: Message):
     rwa_url = "https://"+Ins+"/post/login"
     hdr = {"Client-Service": "Appx",
            "Auth-Key": "appxapi",
-           "User-ID": "-2",
-           "Authorization": "",
+           "User-ID": "4316912",
+           "Authorization": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6IjQzMTY5MTIiLCJlbWFpbCI6InNoYXNoaWt1bWFyODI1MjcxNTM3OUBnYW1haWwuY29tIiwidGltZXN0YW1wIjoxNzA3NTYzMzI3fQ.w78iN2vLMn6Fp3atMUAs8ewKNpIK9xt1Fhl9Fko6ovs",
            "User_app_category": "",
            "Language": "en",
            "Content-Type": "application/x-www-form-urlencoded",
