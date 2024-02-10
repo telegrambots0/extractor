@@ -63,13 +63,13 @@ async def account_login(bot: Client, m: Message):
     hdr = {"Client-Service": "Appx",
            "Auth-Key": "appxapi",
            "User-ID": "4316912",
-           "Authorization": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6IjQzMTY5MTIiLCJlbWFpbCI6InNoYXNoaWt1bWFyODI1MjcxNTM3OUBnYW1haWwuY29tIiwidGltZXN0YW1wIjoxNzA3NTYzMzI3fQ.w78iN2vLMn6Fp3atMUAs8ewKNpIK9xt1Fhl9Fko6ovs",
+           "Authorization": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6IjQzMTY5MTIiLCJlbWFpbCI6InNoYXNoaWt1bWFyODI1MjcxNTM3OUBnYW1haWwuY29tIiwidGltZXN0YW1wIjoxNzA3NTk1NTYwfQ.rRDoEZRRVl7ven0c5fwzFKCUVGwPUd8ZTTSJ5lF_epA",
            "User_app_category": "",
            "Language": "en",
            "Content-Type": "text/html; charset=utf-8",
            "Content-Length": "236",
            "Accept-Encoding": "gzip, deflate",
-           "User-Agent": "okhttp/4.9.1"
+           "User-Agent": "Mozilla/5.0 (Linux; Android 10; SM-J810G) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/121.0.6167.143 Mobile Safari/537.36"
            }
     info = {"email": "", "password": ""}
     input1: Message = await bot.listen(editable.chat.id)
