@@ -63,7 +63,7 @@ async def account_login(bot: Client, m: Message):
     hdr = {"Client-Service": "Appx",
            "Auth-Key": "appxapi",
            "User-ID": "-2",
-           "Authorization": "",
+           "Authorization": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6IjQzMTY5MTIiLCJlbWFpbCI6InNoYXNoaWt1bWFyODI1MjcxNTM3OUBnYW1haWwuY29tIiwidGltZXN0YW1wIjoxNzA3NjU1OTU3fQ.yQ0t3w45DBMhilbSHFhfxWF3LduW3NLmTBYlt-s6EFQ",
            "User_app_category": "",
            "Language": "en",
            "Content-Type": "application/x-www-form-urlencoded",
