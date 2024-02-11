@@ -71,7 +71,7 @@ async def account_login(bot: Client, m: Message):
        }
     headers = {
         "Host": "elearn.crwilladmin.com",
-        "Token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJpYXQiOjE3MDc1NjIzMjEsImNvbiI6eyJpc0FkbWluIjpmYWxzZSwiYXVzZXIiOiJVMFZ6TkdGU2NuQlZjR3h5TkZwV09FYzBURGxOZHowOSIsImlkIjoiZFhwRGJqaFdURUZLVXk5ckwwSmhPV3BSTldocWR6MDkiLCJmaXJzdF9uYW1lIjoiTm05cWRXRnFjbEpxSzA5eU5WTnFMekEzT1VNNVVUMDkiLCJlbWFpbCI6IlpIUXJhVWxYU0RaRmJqRXZiV2w2TUhSak5ucEZLekZNTldoTk5VdzNNVlppYW5CWVdXSXJaVmt5TUQwPSIsInBob25lIjoiVDNWS1JYaFlORFJITWtsRWRHdERPVEJ2Vm5WMVVUMDkiLCJyZWZlcnJhbF9jb2RlIjoiVTBGTFpFdERSVlo2TTJodGNUZHNaMjVsUkhaS1p6MDkiLCJkZXZpY2VfdHlwZSI6IndlYiIsImRldmljZV92ZXJzaW9uIjoiQ2hyb21lIDEyMSIsImRldmljZV9tb2RlbCI6ImNocm9tZSIsInJlbW90ZV9hZGRyIjoiMjQwMTo0OTAwOjFjNmY6YjE5OTo3OTljOjZhMzk6NGRkMToxZjk0In19.gpurJM-q1EtQsWEojtm5YI4EaItUrSX5RhM4MbWus2uGWnelbpRonlyTpAL1J5pnRbEghk06p066DtomHYRaKnvudQ7NtiL_Ax0eigoSe1mCTFhnaJeBe67GXPSpW7QSqS3Ed0w35yH6Ue_iYabo3TXJblaqxUaaP3DN-kileZEBv620ggnKDDfV0gx9X0O0hRjBnyaFw9K487t8DuFf8wa-kpQApPbjdLCCXE4ShjB8GHZPbO-ITP23utkMpcEc64rdf8kYMyQWOuLrm6T60UjVgi_ODKbPDZTC57hvO2fL7t-yxgm8qa-VLzXOBs3rGLzv6sSE2t3jiC0rJdLLqQ",
+        "Token": "",
         "Usertype": "2",
         "Appver": "1.55",
         "Apptype": "android",
