@@ -63,13 +63,13 @@ async def account_login(bot: Client, m: Message):
     hdr = {"Client-Service": "Appx",
            "Auth-Key": "appxapi",
            "User-ID": "-2",
-           "Authorization": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6IjQzMTY5MTIiLCJlbWFpbCI6InNoYXNoaWt1bWFyODI1MjcxNTM3OUBnYW1haWwuY29tIiwidGltZXN0YW1wIjoxNzA3NTk1NTYwfQ.rRDoEZRRVl7ven0c5fwzFKCUVGwPUd8ZTTSJ5lF_epA",
+           "Authorization": "",
            "User_app_category": "",
            "Language": "en",
            "Content-Type": "text/html; charset=utf-8",
            "Content-Length": "236",
            "Accept-Encoding": "gzip, deflate",
-           "User-Agent": "Mozilla/5.0 (Linux; Android 10; SM-J810G) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/121.0.6167.143 Mobile Safari/537.36"
+           "User-Agent": "okhttp/4.9.1"
            }
     info = {"email": "", "password": ""}
     input1: Message = await bot.listen(editable.chat.id)
@@ -93,7 +93,7 @@ async def account_login(bot: Client, m: Message):
                 "User_app_category": "",
                 "Language": "en",
                 "Host": "lastexamapi.teachx.in",
-                "User-Agent": "Mozilla/5.0 (Linux; Android 10; SM-J810G) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/121.0.6167.143 Mobile Safari/537.36"
+                "User-Agent": "okhttp/4.9.1"
                 }
     elif Ins == ("missionapi.appx.co.in"):
         hdr1 = {
@@ -104,7 +104,7 @@ async def account_login(bot: Client, m: Message):
                 "User_app_category": "",
                 "Language": "en",
                 "Host": "missionapi.appx.co.in",
-                "User-Agent": "Mozilla/5.0 (Linux; Android 10; SM-J810G) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/121.0.6167.143 Mobile Safari/537.36"
+                "User-Agent": "okhttp/4.9.1"
                 }
     elif Ins == ("rozgarapinew.teachx.in"):
         hdr1 = {
@@ -115,7 +115,7 @@ async def account_login(bot: Client, m: Message):
                 "User_app_category": "",
                 "Language": "en",
                 "Host": "rozgarapinew.teachx.in",
-                "User-Agent": "Mozilla/5.0 (Linux; Android 10; SM-J810G) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/121.0.6167.143 Mobile Safari/537.36"
+                "User-Agent": "okhttp/4.9.1"
                 }
     else:
         await editable.edit("**Header Not Valid**")
