@@ -59,7 +59,7 @@ async def account_login(bot: Client, m: Message):
     input01: Message = await bot.listen(editable.chat.id)
     Ins = input01.text
     editable = await m.reply_text("Send **ID & Password** in this manner otherwise bot will not respond.\n\nSend like this:-  **ID*Password**")
-    rwa_url = "http://rozgarapinew.teachx.in/post/login"
+    rwa_url = "https://"+Ins+"/post/login"
     hdr = {"Client-Service": "Appx",
            "Auth-Key": "appxapi",
            "User-ID": "4316912",
@@ -121,9 +121,9 @@ async def account_login(bot: Client, m: Message):
         await editable.edit("**Header Not Valid**")
     
     await editable.edit("**login Successful**")
-    #cour_url = "http://rozgarapinew.teachx.in/get/mycourse?userid="
+    #cour_url = "https://rozgarapinew.teachx.in/get/mycourse?userid="
 
-    res1 = requests.get("http://"+Ins+"/get/mycourse?userid="+userid, headers=hdr1)
+    res1 = requests.get("https://"+Ins+"/get/mycourse?userid="+userid, headers=hdr1)
     b_data = res1.json()['data']
     cool = ""
     for data in b_data:
@@ -140,8 +140,8 @@ async def account_login(bot: Client, m: Message):
     input2 = message = await bot.listen(editable.chat.id)
     raw_text2 = input2.text
 
-    # sub_id_url="http://rozgarapinew.teachx.in/get/allsubjectfrmlivecourseclass?courseid="
-    res2 = requests.get("http://"+Ins+"/get/allsubjectfrmlivecourseclass?courseid="+raw_text2, headers=hdr1).json()
+    # sub_id_url="https://rozgarapinew.teachx.in/get/allsubjectfrmlivecourseclass?courseid="
+    res2 = requests.get("https://"+Ins+"/get/allsubjectfrmlivecourseclass?courseid="+raw_text2, headers=hdr1).json()
     subjID = res2["data"]
     await m.reply_text(subjID)
     #SubiD = input("Enter the Subject Id Show in above Response")
@@ -150,7 +150,7 @@ async def account_login(bot: Client, m: Message):
     input3 = message = await bot.listen(editable.chat.id)
     raw_text3 = input3.text
 
-    res3 = requests.get("http://"+Ins+"/get/alltopicfrmlivecourseclass?courseid="+raw_text2,"&subjectid="+raw_text3, headers=hdr1)
+    res3 = requests.get("https://"+Ins+"/get/alltopicfrmlivecourseclass?courseid="+raw_text2,"&subjectid="+raw_text3, headers=hdr1)
     b_data2 = res3.json()['data']
     # print(b_data2)
     vj = ""
@@ -221,11 +221,11 @@ async def account_login(bot: Client, m: Message):
                     "Authorization": token
                     }            
             if Ins == ("lastexamapi.teachx.in"):
-                res4 = requests.get("http://lastexamapi.teachx.in/get/livecourseclassbycoursesubtopconceptapiv3?topicid=" + t + "&start=-1&courseid=" + raw_text2 + "&subjectid=" + raw_text3,headers=hdr11).json()
+                res4 = requests.get("https://lastexamapi.teachx.in/get/livecourseclassbycoursesubtopconceptapiv3?topicid=" + t + "&start=-1&courseid=" + raw_text2 + "&subjectid=" + raw_text3,headers=hdr11).json()
             elif Ins == ("missionapi.appx.co.in"):
-                res4 = requests.get("http://missionapi.appx.co.in/get/livecourseclassbycoursesubtopconceptapiv3?topicid=" + t + "&start=-1&conceptid=4&courseid=" + raw_text2 + "&subjectid=" + raw_text3,headers=hdr11).json()
+                res4 = requests.get("https://missionapi.appx.co.in/get/livecourseclassbycoursesubtopconceptapiv3?topicid=" + t + "&start=-1&conceptid=4&courseid=" + raw_text2 + "&subjectid=" + raw_text3,headers=hdr11).json()
             else:
-                res4 = requests.get("http://rozgarapinew.teachx.in/get/livecourseclassbycoursesubtopconceptapiv3?topicid=" + t + "&start=-1&conceptid=1&courseid=" + raw_text2 + "&subjectid=" + raw_text3,headers=hdr11).json()
+                res4 = requests.get("https://rozgarapinew.teachx.in/get/livecourseclassbycoursesubtopconceptapiv3?topicid=" + t + "&start=-1&conceptid=1&courseid=" + raw_text2 + "&subjectid=" + raw_text3,headers=hdr11).json()
 
             topicid = res4["data"]
             vj = ""
