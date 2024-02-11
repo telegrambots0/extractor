@@ -93,7 +93,7 @@ async def account_login(bot: Client, m: Message):
                 "User_app_category": "",
                 "Language": "en",
                 "Host": "lastexamapi.teachx.in",
-                "User-Agent": "okhttp/4.9.1"
+                "User-Agent": "Mozilla/5.0 (Linux; Android 10; SM-J810G) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/121.0.6167.143 Mobile Safari/537.36"
                 }
     elif Ins == ("missionapi.appx.co.in"):
         hdr1 = {
@@ -104,7 +104,7 @@ async def account_login(bot: Client, m: Message):
                 "User_app_category": "",
                 "Language": "en",
                 "Host": "missionapi.appx.co.in",
-                "User-Agent": "okhttp/4.9.1"
+                "User-Agent": "Mozilla/5.0 (Linux; Android 10; SM-J810G) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/121.0.6167.143 Mobile Safari/537.36"
                 }
     elif Ins == ("rozgarapinew.teachx.in"):
         hdr1 = {
@@ -115,7 +115,7 @@ async def account_login(bot: Client, m: Message):
                 "User_app_category": "",
                 "Language": "en",
                 "Host": "rozgarapinew.teachx.in",
-                "User-Agent": "okhttp/4.9.1"
+                "User-Agent": "Mozilla/5.0 (Linux; Android 10; SM-J810G) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/121.0.6167.143 Mobile Safari/537.36"
                 }
     else:
         await editable.edit("**Header Not Valid**")
