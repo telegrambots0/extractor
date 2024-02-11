@@ -80,7 +80,7 @@ async def account_login(bot: Client, m: Message):
     res = requests.post(rwa_url, data=info, headers=hdr).content
     output = json.loads(res)
     #print(output)
-    userid = output["data"]["userid"]
+    userid = output["data"]["4316912"]
     token = output["data"]["token"]
     #print(userid)
     #print(token)
