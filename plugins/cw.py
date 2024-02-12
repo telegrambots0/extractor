@@ -51,7 +51,7 @@ from base64 import b64encode, b64decode
 
 ACCOUNT_ID = "6206459123001"
 BCOV_POLICY = "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9"
-bc_url = (f"https://edge.api.brightcove.com/playback/v1/accounts/{ACCOUNT_ID}/videos")
+bc_url = (f"https://edge-auth.api.brightcove.com/playback/v1/accounts/{ACCOUNT_ID}/videos")
 bc_hdr = {"BCOV-POLICY": BCOV_POLICY}
 
 @bot.on_message(filters.command(["cw"]))
