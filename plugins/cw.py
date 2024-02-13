@@ -50,7 +50,7 @@ from Crypto.Util.Padding import unpad
 from base64 import b64encode, b64decode
 
 ACCOUNT_ID = "6206459123001"
-BCOV_POLICY = "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9"
+BCOV_POLICY = "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJpYXQiOjE3MDc4MjkwMDYsImNvbiI6eyJpc0FkbWluIjpmYWxzZSwiYXVzZXIiOiJVMFZ6TkdGU2NuQlZjR3h5TkZwV09FYzBURGxOZHowOSIsImlkIjoiZFhwRGJqaFdURUZLVXk5ckwwSmhPV3BSTldocWR6MDkiLCJmaXJzdF9uYW1lIjoiTm05cWRXRnFjbEpxSzA5eU5WTnFMekEzT1VNNVVUMDkiLCJlbWFpbCI6IlpIUXJhVWxYU0RaRmJqRXZiV2w2TUhSak5ucEZLekZNTldoTk5VdzNNVlppYW5CWVdXSXJaVmt5TUQwPSIsInBob25lIjoiVDNWS1JYaFlORFJITWtsRWRHdERPVEJ2Vm5WMVVUMDkiLCJyZWZlcnJhbF9jb2RlIjoiVTBGTFpFdERSVlo2TTJodGNUZHNaMjVsUkhaS1p6MDkiLCJkZXZpY2VfdHlwZSI6IndlYiIsImRldmljZV92ZXJzaW9uIjoiU2FmYXJpIDEzIiwiZGV2aWNlX21vZGVsIjoic2FmYXJpIiwicmVtb3RlX2FkZHIiOiIxNTIuNTguMTM1LjU1In19.ZWAJoJhVetowYbfJUXpGmPrjms7fadfFozjcyYtaefL9ftYy9Xpg27x9HEzemZSMAoFwIw4AfrjULlhWn5bIlSAgPSxo42YZQpOBRZqb5QoD4EiFYsTL7O1KSDYsoQJbKynHXBZcHzR63usZb8plWMGuDS4wCaf2NlJcuzerHXIC2VOns67plbaZwkCp4PqTn1JOk11T_n0JtirOhKpB5GPeArKs0XIzL13GsvGYjh9254dvNVOD_D07I7PwQjdxCh_A9o2xz6E3zCcw36H_jQ-Oja7iU5b-GDEFGaRlfxtZtFHxSM5y7fILkVXqLx2OdhXRaOVoWYpxP3YsPk1SxA"
 bc_url = (f"https://edge.api.brightcove.com/playback/v1/accounts/{ACCOUNT_ID}/videos")
 bc_hdr = {"BCOV-POLICY": BCOV_POLICY}
 
@@ -96,7 +96,6 @@ async def account_login(bot: Client, m: Message):
       await input1.delete(True)
       #s = requests.Session()
       response = s.post(url = url, headers=headers, json=data, timeout=10)
-      token = None
       if response.status_code == 200:
           data = response.json()
           token = data["data"]["token"]
