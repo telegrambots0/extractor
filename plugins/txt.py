@@ -53,7 +53,7 @@ from base64 import b64encode, b64decode
 async def account_login(bot: Client, m: Message):
     global cancel
     cancel = False
-    editable = await m.reply_text("Copy & Paste any one og above Institute Code Example like this **Ankit With Rojgar** :- **elearn.crwilladmin.com**")
+    editable = await m.reply_text("Copy & Paste any one og above Institute Code Example like this **Ankit With Rojgar** :- **rozgarapinew.teachx.in**")
     editable = await m.reply_text("Copy & Paste any one og above Institute Code Example like this **The Last Exam**     :- **lastexamapi.teachx.in**")
     editable = await m.reply_text("Copy & Paste any one og above Institute Code Example like this **The Mission Institute** :- **missionapi.appx.co.in**")
     input01: Message = await bot.listen(editable.chat.id)
@@ -106,7 +106,7 @@ async def account_login(bot: Client, m: Message):
                 "Host": "missionapi.appx.co.in",
                 "User-Agent": "okhttp/4.9.1"
                 }
-    elif Ins == ("elearn.crwilladmin.com"):
+    elif Ins == ("rozgarapinew.teachx.in"):
         hdr1 = {
                 "Client-Service": "Appx",
                 "Auth-Key": "appxapi",
