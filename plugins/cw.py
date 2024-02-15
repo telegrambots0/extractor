@@ -106,6 +106,7 @@ async def account_login(bot: Client, m: Message):
     else:
         token = raw_text
         print("Token:", token)
+        topicid = []
         html1 = s.get("https://elearn.crwilladmin.com/api/v5/comp/my-batch?&token=" + token)
     if html1.status_code == 200:
         try:
