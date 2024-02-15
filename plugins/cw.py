@@ -59,7 +59,7 @@ async def account_login(bot: Client, m: Message):
     global cancel
     cancel = False
 
-    url = "https://elearn.crwilladmin.com/api/v5/login-other"
+    url = "https://elearn.crwilladmin.com/api/v3/login-other"
     data = {
         "deviceType": "android",
         "password": "",
@@ -71,7 +71,7 @@ async def account_login(bot: Client, m: Message):
        }
     headers = {
         "Host": "elearn.crwilladmin.com",
-        "Token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJpYXQiOjE3MDc5MzExOTgsImNvbiI6eyJpc0FkbWluIjpmYWxzZSwiYXVzZXIiOiJVMFZ6TkdGU2NuQlZjR3h5TkZwV09FYzBURGxOZHowOSIsImlkIjoiZFhwRGJqaFdURUZLVXk5ckwwSmhPV3BSTldocWR6MDkiLCJmaXJzdF9uYW1lIjoiTm05cWRXRnFjbEpxSzA5eU5WTnFMekEzT1VNNVVUMDkiLCJlbWFpbCI6IlpIUXJhVWxYU0RaRmJqRXZiV2w2TUhSak5ucEZLekZNTldoTk5VdzNNVlppYW5CWVdXSXJaVmt5TUQwPSIsInBob25lIjoiVDNWS1JYaFlORFJITWtsRWRHdERPVEJ2Vm5WMVVUMDkiLCJyZWZlcnJhbF9jb2RlIjoiVTBGTFpFdERSVlo2TTJodGNUZHNaMjVsUkhaS1p6MDkiLCJkZXZpY2VfdHlwZSI6IndlYiIsImRldmljZV92ZXJzaW9uIjoiQ2hyb21lIDEyMCIsImRldmljZV9tb2RlbCI6InNhZmFyaSIsInJlbW90ZV9hZGRyIjoiMjQwMTo0OTAwOjFjNmY6MTQ4ZDoyNDdmOjM2NTM6NmM0YzozOWUyIn19.PmVoRCjjbxLJakfLBOHJ3ZYgKc-awp8YPaba-EmSjIGMFjwpSKx6Ku3_5lCrRHEqyBS72NSkyAZxP_BXmuf6N5V2Bt66T0yHztMblev9NBFxfiIaYnyRsu6X1YIbkyLwZSKYrAZdPp-TtGUWfUa_6ntCnAEQ-jrqRgZMGTN6g-D8BIbzepUCgroh7S86FrjyM_PoBFwjfqa0y-bjDnCHXKg__Bz4I_qTufYScUt4Qyu7Bl-7zpjGYlNUl2DDFikznCE9bYHYGcrIiTUcghyyW08uz5dTNwxMmy_XuxVIRcLjhuMgL5TqtX8Tk-B-9Yke-LiZCfa1te6y07BKmAdSsQ",
+        "Token": "",
         "Usertype": "2",
         "Appver": "1.55",
         "Apptype": "android",
@@ -89,8 +89,10 @@ async def account_login(bot: Client, m: Message):
     editable = await m.reply_text("Send **ID & Password** in this manner otherwise bot will not respond.\n\nSend like this:-  **ID*Password** \n or \nSend **TOKEN** like This this:-  **TOKEN**" )
     input1: Message = await bot.listen(editable.chat.id)
     raw_text = input1.text
+    print(raw_text)
     s = requests.Session()
-      if "*" in raw_text:
+    print(s)
+    if "*" in raw_text:
       data["email"] = raw_text.split("*")[0]
       data["password"] = raw_text.split("*")[1]
       await input1.delete(True)
@@ -98,15 +100,17 @@ async def account_login(bot: Client, m: Message):
       response = s.post(url = url, headers=headers, json=data, timeout=10)
       if response.status_code == 200:
           data = response.json()
+          print(data)
+          print(response)
           token = data["data"]["token"]
           await m.reply_text(token)
       else:
            await m.reply_text("go back to response")
-      #token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJpYXQiOjE3MDc5MTgzMjMsImNvbiI6eyJpc0FkbWluIjpmYWxzZSwiYXVzZXIiOiJVMFZ6TkdGU2NuQlZjR3h5TkZwV09FYzBURGxOZHowOSIsImlkIjoiZFhwRGJqaFdURUZLVXk5ckwwSmhPV3BSTldocWR6MDkiLCJmaXJzdF9uYW1lIjoiTm05cWRXRnFjbEpxSzA5eU5WTnFMekEzT1VNNVVUMDkiLCJlbWFpbCI6IlpIUXJhVWxYU0RaRmJqRXZiV2w2TUhSak5ucEZLekZNTldoTk5VdzNNVlppYW5CWVdXSXJaVmt5TUQwPSIsInBob25lIjoiVDNWS1JYaFlORFJITWtsRWRHdERPVEJ2Vm5WMVVUMDkiLCJyZWZlcnJhbF9jb2RlIjoiVTBGTFpFdERSVlo2TTJodGNUZHNaMjVsUkhaS1p6MDkiLCJkZXZpY2VfdHlwZSI6IndlYiIsImRldmljZV92ZXJzaW9uIjoiQ2hyb21lIDEyMSIsImRldmljZV9tb2RlbCI6ImNocm9tZSIsInJlbW90ZV9hZGRyIjoiMjQwMTo0OTAwOjFjNmY6MTQ4ZDpiOGFhOmNiM2M6ZjQwZTpkZjRlIn19.YgsEckYo1xai4qa1ALcZYNZgKzy83kPCKMd55mVWIG3BNCdjpVJ9SlRkboFN4sfweYP9eFHYYqb16YCz1hkpXcjAmnp5Uw72Ni_4WTlmshznIbMycRpLHJQeYz8DJwGdCU2sKQhyI6LlSYL-di0R2ya7y9S8V872T-B4OHIPAzZ-4d7AQ67PfevsE4Nv-_QcRLhKFzBh4Lqv9-Kob9jpC43EOKPid8MguIuLoSIAHb5H5LpSyccS9iOA0yUuo_q4sDpysrdqpbpL_ZyRUcFqD_88d5Oj-90rYvP8xLqUOO5NEUFyWaGqXNq-mcMS1oOdrq7DlDmTlZYI3BXsypxqhw"
+      #token = "4ffd1627981589c0a1261f7a114fbbf8bc87c6d9"
       await m.reply_text(f"```{token}```")
     else:
       token = raw_text
-    html1 = s.get("https://elearn.crwilladmin.com/api/v5/my-batch?&token=" + token).json()
+    html1 = s.get("https://elearn.crwilladmin.com/api/my-batch?&token=" + token).json()
     topicid = html1["data"]["batchData"]
     cool=""
     for data in topicid:
@@ -122,7 +126,7 @@ async def account_login(bot: Client, m: Message):
     editable1= await m.reply_text("**Now send the Batch ID to Download**")
     input2 = message = await bot.listen(editable.chat.id)
     raw_text2 = input2.text
-    html2 = s.get("https://elearn.crwilladmin.com/api/v5/comp/batch-topic/"+raw_text2+"?type=class&token="+token).json()
+    html2 = s.get("https://elearn.crwilladmin.com/api/v3/comp/batch-topic/"+raw_text2+"?type=class&token="+token).json()
     topicid = html2["data"]["batch_topic"]
     bn = html2["data"]["batch_detail"]["name"]
     vj=""
@@ -146,7 +150,7 @@ async def account_login(bot: Client, m: Message):
         t_name=(data["topicName"].replace(" ",""))
         tid = (data["id"])
         scraper = cloudscraper.create_scraper()
-        ffx = s.get("https://elearn.crwilladmin.com/api/v5/comp/batch-detail/"+raw_text2+"?redirectBy=mybatch&topicId="+tid+"&token="+token).json()
+        ffx = s.get("https://elearn.crwilladmin.com/api/v3/comp/batch-detail/"+raw_text2+"?redirectBy=mybatch&topicId="+tid+"&token="+token).json()
             #ffx = json.loads(html3)
         vcx =ffx["data"]["class_list"]["batchDescription"]
         vvx =ffx["data"]["class_list"]["classes"]
@@ -174,9 +178,9 @@ async def account_login(bot: Client, m: Message):
 #              for z in range(0,len(xvv)):
 #                  p =xvv[z]
 
-            #gettting all json with diffrent topic id https://elearn.crwilladmin.com/api/v5/comp/batch-detail/881?redirectBy=mybatch&topicId=2324&token=d76fce74c161a264cf66b972fd0bc820992fe57
+            #gettting all json with diffrent topic id https://elearn.crwilladmin.com/api/v1/comp/batch-detail/881?redirectBy=mybatch&topicId=2324&token=d76fce74c161a264cf66b972fd0bc820992fe57
             #scraper = cloudscraper.create_scraper()
-            html4 = s.get("https://elearn.crwilladmin.com/api/v5/comp/batch-detail/"+raw_text2+"?redirectBy=mybatch&topicId="+t+"&token="+token).content
+            html4 = s.get("https://elearn.crwilladmin.com/api/v3/comp/batch-detail/"+raw_text2+"?redirectBy=mybatch&topicId="+t+"&token="+token).content
             ff = json.loads(html4)
             #vc =ff.json()["data"]["class_list"]["batchDescription"]
             mm = ff["data"]["class_list"]["batchName"].replace("/ "," ")
@@ -251,7 +255,7 @@ async def account_login(bot: Client, m: Message):
         raw_text5 = input5.text
         if raw_text5 == 'y':
             scraper = cloudscraper.create_scraper()
-            html7 = scraper.get("https://elearn.crwilladmin.com/api/v5/comp/batch-notes/"+raw_text2+"?topicid="+raw_text2+"&token="+token).content
+            html7 = scraper.get("https://elearn.crwilladmin.com/api/v3/comp/batch-notes/"+raw_text2+"?topicid="+raw_text2+"&token="+token).content
             pdfD=json.loads(html7)
             k=pdfD["data"]["notesDetails"]
             bb = len(pdfD["data"]["notesDetails"])
