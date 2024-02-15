@@ -60,7 +60,7 @@ logging.basicConfig(level=logging.DEBUG)
 async def account_login(bot: Client, m: Message):
     global cancel
     cancel = False
-
+    token = None
     url = "https://elearn.crwilladmin.com/api/v5/login"
     data = {
         "deviceType": "android",
