@@ -62,7 +62,7 @@ async def account_login(bot: Client, m: Message):
     global cancel
     cancel = False
     token = None
-    url = "https://elearn.crwilladmin.com/api/v5/login"
+    url = "https://web.careerwill.com/login"
     payload = {
         'username': '7488438311',
         'password': 'Rohit@123'
