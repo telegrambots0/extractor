@@ -87,8 +87,8 @@ try:
     response = requests.post(url=url, headers=headers, json=data, timeout=10)
     response.raise_for_status()  # Raise an exception for HTTP errors (status code >= 400)
     if response.status_code == 200:
-        data = response.json()
-        token = data["data"]["token"]
+          data = response.json()
+          token = data["data"]["token"]
           await m.reply_text(token)
     else:
           await m.reply_text(f"Error: Response status code is not 200. Response content: {response.text}")
