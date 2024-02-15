@@ -89,9 +89,9 @@ try:
     if response.status_code == 200:
         data = response.json()
         token = data["data"]["token"]
-        await m.reply_text(token)
+          await m.reply_text(token)
     else:
-        await m.reply_text(f"Error: Response status code is not 200. Response content: {response.text}")
+          await m.reply_text(f"Error: Response status code is not 200. Response content: {response.text}")
 except requests.exceptions.RequestException as e:
     await m.reply_text(f"An error occurred while making the request: {str(e)}")
 except json.JSONDecodeError as e:
