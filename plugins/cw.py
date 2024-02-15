@@ -106,9 +106,18 @@ async def account_login(bot: Client, m: Message):
     else:
         token = raw_text
         print("Token:", token)
-        html1 = s.get("https://elearn.crwilladmin.com/api/v5/comp/my-batch?&token=" + token).json()
-        topicid = html1["data"]["batchData"]
-        cool=""
+        html1 = s.get("https://elearn.crwilladmin.com/api/v5/comp/my-batch?&token=" + token)
+    if html1.status_code == 200:
+        try:
+            response_json = html1.json()
+            topicid = response_json.get("data", {}).get("batchData", [])
+            # Continue processing the data
+        except json.JSONDecodeError:
+            await m.reply_text("Error: Response is not in JSON format.")
+    else:
+        await m.reply_text(f"Error: Failed to fetch data. Status code: {html1.status_code}")
+        
+    cool = ""
     for data in topicid:
         instructorName=(data["instructorName"])
         FFF="**BATCH-ID - BATCH NAME - INSTRUCTOR**"
