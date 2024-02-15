@@ -107,7 +107,7 @@ async def account_login(bot: Client, m: Message):
     else:
       token = raw_text
       print(token)
-      print(response0
+      print(response)
       html1 = s.get("https://elearn.crwilladmin.com/api/v5/my-batch?&token=" + token).json()
       topicid = html1["data"]["batchData"]
       cool=""
