@@ -54,12 +54,14 @@ BCOV_POLICY = "BCpkADawqM22pe6lllPFfUMQfj47agK1PJ_Sb3P_jty9S9_yCNwT87DTolChZKFm0
 bc_url = (f"https://edge.api.brightcove.com/playback/v1/accounts/{ACCOUNT_ID}/videos")
 bc_hdr = {"BCOV-POLICY": BCOV_POLICY}
 
+logging.basicConfig(level=logging.DEBUG)
+
 @bot.on_message(filters.command(["cw"]))
 async def account_login(bot: Client, m: Message):
     global cancel
     cancel = False
 
-    url = "https://elearn.crwilladmin.com/api/v5/login-other"
+    url = "https://elearn.crwilladmin.com/api/v5/login"
     data = {
         "deviceType": "android",
         "password": "",
