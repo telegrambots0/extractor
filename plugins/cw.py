@@ -83,7 +83,7 @@ async def account_login(bot: Client, m: Message):
         "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/116.0.0.0 Safari/537.36 2",
         'Connection': 'Keep-Alive'
        }
-   try:
+try:
     response = requests.post(url=url, headers=headers, json=data, timeout=10)
     response.raise_for_status()  # Raise an exception for HTTP errors (status code >= 400)
     if response.status_code == 200:
