@@ -50,7 +50,7 @@ from Crypto.Util.Padding import unpad
 from base64 import b64encode, b64decode
 
 ACCOUNT_ID = "6206459123001"
-BCOV_POLICY = "BCpkADawqM22pe6lllPFfUMQfj47agK1PJ_Sb3P_jty9S9_yCNwT87DTolChZKFm091O3K6UCQ61qHUHBgJg811eub1T1Bqn2HHYPkGrrknKaHDgj-ofQZnWBUZJNMaKHfDFd5HoVbeQtqEgVDJHMO9Oq7q5YLIaX9MYaaDreXLDWkxzVvrng6HXTz3whbyoYzOv_4bks3_8HOqCcqkbQL6XZehh398zRw6zPjO42okH0WoX-KNmjcICMpg"
+BCOV_POLICY = "BCpkADawqM1474MvKwYlMRZNBPoqkJY-UWm7zE1U769d5r5kqTjG0v8L-THXuVZtdIQJpfMPB37L_VJQxTKeNeLO2Eac_yMywEgyV9GjFDQ2LTiT4FEiHhKAUvdbx9ku6fGnQKSMB8J5uIDd"
 bc_url = (f"https://edge.api.brightcove.com/playback/v1/accounts/{ACCOUNT_ID}/videos")
 bc_hdr = {"BCOV-POLICY": BCOV_POLICY}
 
@@ -59,7 +59,7 @@ async def account_login(bot: Client, m: Message):
     global cancel
     cancel = False
 
-    url = "https://elearn.crwilladmin.com/api/v5/login-other"
+    url = "https://elearn.crwilladmin.com/api/v5/login-other//"
     data = {
         "deviceType": "android",
         "password": "",
@@ -75,28 +75,26 @@ async def account_login(bot: Client, m: Message):
         "Usertype": "2",
         "Appver": "1.55",
         "Apptype": "android",
-        "Content-Type": "application/json; charset=utf-8",
+        "Content-Type": "application/json; charset=UTF-8",
         "Content-Length": "313",
         "Accept-Encoding": "gzip, deflate",
-        "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/116.0.0.0 Safari/537.36 2",
+        "user-agent": "okhttp/5.0.0-alpha.2",
         'Connection': 'Keep-Alive'
        }
-    #proxy_host = ['47.254.153.200:80']
-    #proxies = {
-     #       'https': proxy_host,
-     #       'http': proxy_host,
-     #   }
+    proxy_host = ['47.254.153.200:80']
+    proxies = {
+           'https': proxy_host,
+           'http': proxy_host,
+       }
     editable = await m.reply_text("Send **ID & Password** in this manner otherwise bot will not respond.\n\nSend like this:-  **ID*Password** \n or \nSend **TOKEN** like This this:-  **TOKEN**" )
     input1: Message = await bot.listen(editable.chat.id)
     raw_text = input1.text
     s = requests.Session()
-    token = None
-    topicid = []
     if "*" in raw_text:
       data["email"] = raw_text.split("*")[0]
       data["password"] = raw_text.split("*")[1]
       await input1.delete(True)
-      #s = requests.Session()
+      s = requests.Session()
       response = s.post(url = url, headers=headers, json=data, timeout=10)
       if response.status_code == 200:
           data = response.json()
@@ -104,12 +102,13 @@ async def account_login(bot: Client, m: Message):
           await m.reply_text(token)
       else:
           await m.reply_text("go back to response")
-    else:
-        token = raw_text
-    if token:
-       html1 = s.get("https://elearn.crwilladmin.com/api/v5/my-batch?&token=" + token).json()
-       topicid = html1["data"]["batchData"]
-       cool=""
+          token = "4ffd1627981589c0a1261f7a114fbbf8bc87c6d9"
+          await m.reply_text(f"'''{token}'''")
+      else:
+      token = raw_text
+    html1 = s.get("https://elearn.crwilladmin.com/api/v5/comp/my-batch?&token=" + token).json()
+    topicid = html1["data"]["batchData"]
+    cool=""
     for data in topicid:
         instructorName=(data["instructorName"])
         FFF="**BATCH-ID - BATCH NAME - INSTRUCTOR**"
@@ -118,6 +117,7 @@ async def account_login(bot: Client, m: Message):
         if len(f'{cool}{aa}')>4096:
             await m.reply_text(aa)
             cool =""
+        cool+=aa
         cool+=aa
     await editable.edit(f'{"**You have these batches :-**"}\n\n{FFF}\n\n{cool}')
     editable1= await m.reply_text("**Now send the Batch ID to Download**")
