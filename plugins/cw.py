@@ -56,6 +56,7 @@ bc_hdr = {"BCOV-POLICY": BCOV_POLICY}
 
 logging.basicConfig(level=logging.DEBUG)
 
+# Define the account_login function
 @bot.on_message(filters.command(["cw"]))
 async def account_login(bot: Client, m: Message):
     global cancel
@@ -63,76 +64,51 @@ async def account_login(bot: Client, m: Message):
     token = None
     url = "https://elearn.crwilladmin.com/api/v5/login"
     payload = {
-    'username': '7488438311',
-    'password': 'Rohit@123'
-}
+        'username': '7488438311',
+        'password': 'Rohit@123'
+    }
 
-response = requests.post(url, json=payload)
+    response = requests.post(url, json=payload)
 
-if response.status_code == 200:
-    data = response.json()
-    auth_token = data.get('token')
-    print("Auth Token:", auth_token)
-else:
-    print("Failed to retrieve auth token. Status code:", response.status_code)
-    data = {
-        "deviceType": "android",
-        "password": "",
-        "deviceIMEI": "08750aa91d7387ab",
-        "deviceModel": "Realme RMX2001",
-        "deviceVersion": "R(Android 11.0)",
-        "email": "",
-        "deviceToken": "fYdfgaUaQZmYP7vV4r2rjr:APA91bFPn3Z4m_YS8kYQSthrueUh-lyfxLghL9ka-MT0m_4TRtlUu7cy90L8H6VbtWorg95Car6aU9zjA-59bZypta9GNNuAdUxTnIiGFxMCr2G3P4Gf054Kdgwje44XWzS9ZGa4iPZh"
-       }
-    headers = {
-        "Host": "elearn.crwilladmin.com",
-        "Token": "",
-        "Usertype": "",
-        "Appver": "1.55",
-        "Apptype": "android",
-        "Content-Type": "application/json; charset=utf-8",
-        "Content-Length": "313",
-        "Accept-Encoding": "gzip, deflate",
-        "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/116.0.0.0 Safari/537.36 2",
-        'Connection': 'Keep-Alive'
-       }
-    #proxy_host = ['47.254.153.200:80']
-    #proxies = {
-     #       'https': proxy_host,
-     #       'http': proxy_host,
-     #   }
+    if response.status_code == 200:
+        data = response.json()
+        auth_token = data.get('token')
+        print("Auth Token:", auth_token)
+    else:
+        print("Failed to retrieve auth token. Status code:", response.status_code)
+        return  # Return to avoid continuing if authentication fails
+
+    # Process user input
     editable = await m.reply_text("Send **ID & Password** in this manner otherwise bot will not respond.\n\nSend like this:-  **ID*Password** \n or \nSend **TOKEN** like This this:-  **TOKEN**" )
     input1: Message = await bot.listen(editable.chat.id)
     raw_text = input1.text
     s = requests.Session()
     if "*" in raw_text:
-      data["email"] = raw_text.split("*")[0]
-      data["password"] = raw_text.split("*")[1]
-      await input1.delete(True)
-      #s = requests.Session()
-      response = s.post(url = url, headers=headers, json=data, timeout=10)
-      if response.status_code == 200:
-          data = response.json()
-          token = data["data"]["token"]
-          await m.reply_text(token)
-      else:
-           await m.reply_text("go back to response")
-      #token = "4ffd1627981589c0a1261f7a114fbbf8bc87c6d9"
-      await m.reply_text(f"```{token}```")
+        data["email"] = raw_text.split("*")[0]
+        data["password"] = raw_text.split("*")[1]
+        await input1.delete(True)
+        response = s.post(url=url, headers=headers, json=data, timeout=10)
+        if response.status_code == 200:
+            data = response.json()
+            token = data["data"]["token"]
+            await m.reply_text(token)
+        else:
+            await m.reply_text("go back to response")
+        await m.reply_text(f"```{token}```")
     else:
-      token = raw_text
+        token = raw_text
+
     html1 = s.get("https://elearn.crwilladmin.com/api/v5/my-batch?&token=" + token).json()
     topicid = html1["data"]["batchData"]
-    cool=""
+    cool = ""
     for data in topicid:
-        instructorName=(data["instructorName"])
-        FFF="**BATCH-ID - BATCH NAME - INSTRUCTOR**"
-        aa =f" ```{data['id']}```      - **{data['batchName']}**\n{data['instructorName']}\n\n"
-        #aa=f"**Batch Name -** {data['batchName']}\n**Batch ID -** ```{data['id']}```\n**By -** {data['instructorName']}\n\n"
-        if len(f'{cool}{aa}')>4096:
+        instructorName = data["instructorName"]
+        FFF = "**BATCH-ID - BATCH NAME - INSTRUCTOR**"
+        aa = f" ```{data['id']}```      - **{data['batchName']}**\n{data['instructorName']}\n\n"
+        if len(f'{cool}{aa}') > 4096:
             await m.reply_text(aa)
-            cool =""
-        cool+=aa
+            cool = ""
+        cool += aa
     await editable.edit(f'{"**You have these batches :-**"}\n\n{FFF}\n\n{cool}')
     editable1= await m.reply_text("**Now send the Batch ID to Download**")
     input2 = message = await bot.listen(editable.chat.id)
