@@ -62,6 +62,19 @@ async def account_login(bot: Client, m: Message):
     cancel = False
     token = None
     url = "https://elearn.crwilladmin.com/api/v5/login"
+    payload = {
+    'username': '7488438311',
+    'password': 'Rohit@123'
+}
+
+response = requests.post(url, json=payload)
+
+if response.status_code == 200:
+    data = response.json()
+    auth_token = data.get('token')
+    print("Auth Token:", auth_token)
+else:
+    print("Failed to retrieve auth token. Status code:", response.status_code)
     data = {
         "deviceType": "android",
         "password": "",
