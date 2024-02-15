@@ -81,6 +81,20 @@ async def account_login(bot: Client, m: Message):
         "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/116.0.0.0 Safari/537.36 2",
         'Connection': 'Keep-Alive'
        }
+    try:
+        response = requests.post(url=url, headers=headers, json=data, timeout=10)
+        response.raise_for_status()  # Raise an exception for HTTP errors (status code >= 400)
+        if response.status_code == 200:
+            data = response.json()
+            token = data["data"]["token"]
+            await m.reply_text(token)
+        else:
+            await m.reply_text("Error: Response status code is not 200")
+            await m.reply_text(response.text)  # Print the response content for debugging
+    except requests.exceptions.RequestException as e:
+        await m.reply_text(f"An error occurred while making the request: {str(e)}")
+    except json.JSONDecodeError as e:
+        await m.reply_text(f"An error occurred while parsing the JSON response: {str(e)}")
     #proxy_host = ['47.254.153.200:80']
     #proxies = {
      #       'https': proxy_host,
