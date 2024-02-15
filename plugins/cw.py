@@ -86,6 +86,7 @@ async def account_login(bot: Client, m: Message):
      #       'https': proxy_host,
      #       'http': proxy_host,
      #   }
+    headers["Token"] = "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJpYXQiOjE3MDgwMTYxMDAsImNvbiI6eyJpc0FkbWluIjpmYWxzZSwiYXVzZXIiOiJVMFZ6TkdGU2NuQlZjR3h5TkZwV09FYzBURGxOZHowOSIsImlkIjoiZFhwRGJqaFdURUZLVXk5ckwwSmhPV3BSTldocWR6MDkiLCJmaXJzdF9uYW1lIjoiTm05cWRXRnFjbEpxSzA5eU5WTnFMekEzT1VNNVVUMDkiLCJlbWFpbCI6IlpIUXJhVWxYU0RaRmJqRXZiV2w2TUhSak5ucEZLekZNTldoTk5VdzNNVlppYW5CWVdXSXJaVmt5TUQwPSIsInBob25lIjoiVDNWS1JYaFlORFJITWtsRWRHdERPVEJ2Vm5WMVVUMDkiLCJyZWZlcnJhbF9jb2RlIjoiVTBGTFpFdERSVlo2TTJodGNUZHNaMjVsUkhaS1p6MDkiLCJkZXZpY2VfdHlwZSI6IndlYiIsImRldmljZV92ZXJzaW9uIjoiQ2hyb21lIDEyMCIsImRldmljZV9tb2RlbCI6InNhZmFyaSIsInJlbW90ZV9hZGRyIjoiMjQwMTo0OTAwOjFjMmE6OWIzOmRiOjc3NGU6NzE3Njo0Njc5In19.aXTBowFkfcRmVZ2sYMoF931p4xGO8e9TigLGqvwHo6EgfisgpZODrASUXqaPg1MK1iLgtQFrXzQZURgaNKnOV0bp8gp-l5FUl_pOBRGudsMknt32jgYeASXy2QGIiG7JSnS0jn33QCt6R7d_WW8isQkD0pz6c8EU14UkUyefRghmDwTcKY-XZNQzLH8_1wPmLXOljlkEiMF2uSb1wHHJ1xkQ-i0fqRKAWswjUm_g6KT8lHFoITpBRFz0x_Hjxa8wnFPAXMB068WsoAZ2wmj5JA4c9vnjniX3vyV-W46ZT_jBfUmLLmHFRrK3eac1puGIeLeY0dNHCUMCRhRcP67Ypg"
     editable = await m.reply_text("Send **ID & Password** in this manner otherwise bot will not respond.\n\nSend like this:-  **ID*Password** \n or \nSend **TOKEN** like This this:-  **TOKEN**" )
     input1: Message = await bot.listen(editable.chat.id)
     raw_text = input1.text
