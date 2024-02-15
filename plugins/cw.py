@@ -101,7 +101,7 @@ async def account_login(bot: Client, m: Message):
           token = data["data"]["token"]
           await m.reply_text(token)
       else:
-          await m.reply_text(""Login failed."")
+          await m.reply_text("Login failed.")
           return
     else:
         token = raw_text
