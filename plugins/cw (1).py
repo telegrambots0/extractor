@@ -54,12 +54,12 @@ BCOV_POLICY = "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9"
 bc_url = (f"https://edge.api.brightcove.com/playback/v1/accounts/{ACCOUNT_ID}/videos")
 bc_hdr = {"BCOV-POLICY": BCOV_POLICY}
 
-@bot.on_message(filters.command(["cw"])& ~filters.edited)
+@bot.on_message(filters.command(["cw"]))
 async def account_login(bot: Client, m: Message):
     global cancel
     cancel = False
 
-    url = "https://elearn.crwilladmin.com/api/v1/login-other"
+    url = "https://elearn.crwilladmin.com/api/v5/login-other"
     data = {
         "deviceType": "android",
         "password": "",
@@ -106,7 +106,7 @@ async def account_login(bot: Client, m: Message):
       await m.reply_text(f"```{token}```")
     else:
       token = raw_text
-    html1 = s.get("https://elearn.crwilladmin.com/api/v1/comp/my-batch?&token=" + token).json()
+    html1 = s.get("https://elearn.crwilladmin.com/api/v5/comp/my-batch?&token=" + token).json()
     topicid = html1["data"]["batchData"]
     cool=""
     for data in topicid:
@@ -122,7 +122,7 @@ async def account_login(bot: Client, m: Message):
     editable1= await m.reply_text("**Now send the Batch ID to Download**")
     input2 = message = await bot.listen(editable.chat.id)
     raw_text2 = input2.text
-    html2 = s.get("https://elearn.crwilladmin.com/api/v1/comp/batch-topic/"+raw_text2+"?type=class&token="+token).json()
+    html2 = s.get("https://elearn.crwilladmin.com/api/v5/comp/batch-topic/"+raw_text2+"?type=class&token="+token).json()
     topicid = html2["data"]["batch_topic"]
     bn = html2["data"]["batch_detail"]["name"]
     vj=""
@@ -146,7 +146,7 @@ async def account_login(bot: Client, m: Message):
         t_name=(data["topicName"].replace(" ",""))
         tid = (data["id"])
         scraper = cloudscraper.create_scraper()
-        ffx = s.get("https://elearn.crwilladmin.com/api/v1/comp/batch-detail/"+raw_text2+"?redirectBy=mybatch&topicId="+tid+"&token="+token).json()
+        ffx = s.get("https://elearn.crwilladmin.com/api/v5/comp/batch-detail/"+raw_text2+"?redirectBy=mybatch&topicId="+tid+"&token="+token).json()
             #ffx = json.loads(html3)
         vcx =ffx["data"]["class_list"]["batchDescription"]
         vvx =ffx["data"]["class_list"]["classes"]
@@ -174,9 +174,9 @@ async def account_login(bot: Client, m: Message):
 #              for z in range(0,len(xvv)):
 #                  p =xvv[z]
 
-            #gettting all json with diffrent topic id https://elearn.crwilladmin.com/api/v1/comp/batch-detail/881?redirectBy=mybatch&topicId=2324&token=d76fce74c161a264cf66b972fd0bc820992fe57
+            #gettting all json with diffrent topic id https://elearn.crwilladmin.com/api/v5/comp/batch-detail/881?redirectBy=mybatch&topicId=2324&token=d76fce74c161a264cf66b972fd0bc820992fe57
             #scraper = cloudscraper.create_scraper()
-            html4 = s.get("https://elearn.crwilladmin.com/api/v1/comp/batch-detail/"+raw_text2+"?redirectBy=mybatch&topicId="+t+"&token="+token).content
+            html4 = s.get("https://elearn.crwilladmin.com/api/v5/comp/batch-detail/"+raw_text2+"?redirectBy=mybatch&topicId="+t+"&token="+token).content
             ff = json.loads(html4)
             #vc =ff.json()["data"]["class_list"]["batchDescription"]
             mm = ff["data"]["class_list"]["batchName"].replace("/ "," ")
@@ -202,7 +202,7 @@ async def account_login(bot: Client, m: Message):
                             video_url = video_source["src"]
                             #print(video_url)
                             #scraper = cloudscraper.create_scraper()
-                            html5 = s.get("https://elearn.crwilladmin.com/api/v1/livestreamToken?type=brightcove&vid="+vidid+"&token="+token).content
+                            html5 = s.get("https://elearn.crwilladmin.com/api/v5/livestreamToken?type=brightcove&vid="+vidid+"&token="+token).content
                             surl = json.loads(html5)
                             stoken = surl["data"]["token"]
                             #print(stoken)
@@ -222,7 +222,7 @@ async def account_login(bot: Client, m: Message):
                             video_url1 = video_source1["src"]
                             #print(video_url)
                             #scraper = cloudscraper.create_scraper()
-                            html8 = s.get("https://elearn.crwilladmin.com/api/v1/livestreamToken?type=brightcove&vid="+vidid+"&token="+token).content
+                            html8 = s.get("https://elearn.crwilladmin.com/api/v5/livestreamToken?type=brightcove&vid="+vidid+"&token="+token).content
                             surl1 = json.loads(html8)
                             stoken1 = surl1["data"]["token"]
                             #print(stoken)
@@ -251,7 +251,7 @@ async def account_login(bot: Client, m: Message):
         raw_text5 = input5.text
         if raw_text5 == 'y':
             scraper = cloudscraper.create_scraper()
-            html7 = scraper.get("https://elearn.crwilladmin.com/api/v1/comp/batch-notes/"+raw_text2+"?topicid="+raw_text2+"&token="+token).content
+            html7 = scraper.get("https://elearn.crwilladmin.com/api/v5/comp/batch-notes/"+raw_text2+"?topicid="+raw_text2+"&token="+token).content
             pdfD=json.loads(html7)
             k=pdfD["data"]["notesDetails"]
             bb = len(pdfD["data"]["notesDetails"])
