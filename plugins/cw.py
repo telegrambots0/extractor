@@ -117,14 +117,14 @@ async def account_login(bot: Client, m: Message):
         topicid = html1["data"]["batchData"]
         cool = ""
         for data in topicid:
-        instructorName=(data["instructorName"])
-        FFF="**BATCH-ID - BATCH NAME - INSTRUCTOR**"
-        aa =f" ```{data['id']}```      - **{data['batchName']}**\n{data['instructorName']}\n\n"
-        #aa=f"**Batch Name -** {data['batchName']}\n**Batch ID -** ```{data['id']}```\n**By -** {data['instructorName']}\n\n"
-        if len(f'{cool}{aa}')>4096:
-            await m.reply_text(aa)
-            cool =""
-        cool+=aa
+            instructorName=(data["instructorName"])
+            FFF="**BATCH-ID - BATCH NAME - INSTRUCTOR**"
+            aa =f" ```{data['id']}```      - **{data['batchName']}**\n{data['instructorName']}\n\n"
+            #aa=f"**Batch Name -** {data['batchName']}\n**Batch ID -** ```{data['id']}```\n**By -** {data['instructorName']}\n\n"
+            if len(f'{cool}{aa}')>4096:
+               await m.reply_text(aa)
+               cool =""
+            cool+=aa
     await editable.edit(f'{"**You have these batches :-**"}\n\n{FFF}\n\n{cool}')
     editable1= await m.reply_text("**Now send the Batch ID to Download**")
     input2 = message = await bot.listen(editable.chat.id)
