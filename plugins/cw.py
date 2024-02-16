@@ -110,15 +110,13 @@ async def account_login(bot: Client, m: Message):
       token = raw_text
         # Make request to API and validate JSON response
     response = s.get("https://elearn.crwilladmin.com/api/v5/comp/my-batch?&token=" + token)
+    print("Response Content:", response.content)  # Logging response content
+
     try:
-        json_data = response.json()
-        # Process JSON data here
-    except ValueError:
-        await m.reply_text("Invalid JSON response from the API.")
-    html1 = s.get("https://elearn.crwilladmin.com/api/v5/comp/my-batch?&token=" + token).json()
-    topicid = html1["data"]["batchData"]
-    cool=""
-    for data in topicid:
+        html1 = response.json()
+        topicid = html1["data"]["batchData"]
+        cool = ""
+        for data in topicid:
         instructorName=(data["instructorName"])
         FFF="**BATCH-ID - BATCH NAME - INSTRUCTOR**"
         aa =f" ```{data['id']}```      - **{data['batchName']}**\n{data['instructorName']}\n\n"
