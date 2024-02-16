@@ -74,9 +74,9 @@ async def account_login(bot: Client, m: Message):
         "Token": "",
         "Usertype": "",
         "Appver": "1.55",
-        "Apptype": "android",
-        "Content-Type": "application/json; charset=utf-8",
-        "Content-Length": "313",
+        "Apptype": "web",
+        "Content-Type": "application/x-www-form-urlencoded",
+        "Content-Length": "96",
         "Accept-Encoding": "gzip, deflate",
         "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/116.0.0.0 Safari/537.36 2",
         'Connection': 'Keep-Alive'
