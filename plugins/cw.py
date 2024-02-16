@@ -92,23 +92,23 @@ async def account_login(bot: Client, m: Message):
     input1: Message = await bot.listen(editable.chat.id)
     raw_text = input1.text
     s = requests.Session()
-
     if "*" in raw_text:
         data["email"] = raw_text.split("*")[0]
         data["password"] = raw_text.split("*")[1]
         await input1.delete(True)
-        response = s.post(url=url, headers=headers, json=data, timeout=10)
+        #s = requests.Session()
+        response = s.post(url = url, headers=headers, json=data, timeout=10)
         if response.status_code == 200:
             data = response.json()
             token = data["data"]["token"]
             await m.reply_text(token)
         else:
             await m.reply_text("go back to response")
+        #token = "4ffd1627981589c0a1261f7a114fbbf8bc87c6d9"
         await m.reply_text(f"```{token}```")
     else:
         token = raw_text
-
-    # Make request to API and validate JSON response
+        # Make request to API and validate JSON response
     response = s.get("https://elearn.crwilladmin.com/api/v5/comp/my-batch?&token=" + token)
     print("Response Content:", response.content)  # Logging response content
 
@@ -255,3 +255,5 @@ async def account_login(bot: Client, m: Message):
         except Exception as e:
             print(str(e))
         await m.reply_text("Done")
+    except Exception as e:
+        await m.reply_text(str(e))
