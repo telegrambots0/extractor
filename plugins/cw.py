@@ -54,6 +54,8 @@ BCOV_POLICY = "BCpkADawqM22pe6lllPFfUMQfj47agK1PJ_Sb3P_jty9S9_yCNwT87DTolChZKFm0
 bc_url = (f"https://edge.api.brightcove.com/playback/v1/accounts/{ACCOUNT_ID}/videos")
 bc_hdr = {"BCOV-POLICY": BCOV_POLICY}
 
+AUTH_TOKEN = "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJpYXQiOjE3MDgwODA2NjEsImNvbiI6eyJpc0FkbWluIjpmYWxzZSwiYXVzZXIiOiJVMFZ6TkdGU2NuQlZjR3h5TkZwV09FYzBURGxOZHowOSIsImlkIjoiZFhwRGJqaFdURUZLVXk5ckwwSmhPV3BSTldocWR6MDkiLCJmaXJzdF9uYW1lIjoiTm05cWRXRnFjbEpxSzA5eU5WTnFMekEzT1VNNVVUMDkiLCJlbWFpbCI6IlpIUXJhVWxYU0RaRmJqRXZiV2w2TUhSak5ucEZLekZNTldoTk5VdzNNVlppYW5CWVdXSXJaVmt5TUQwPSIsInBob25lIjoiVDNWS1JYaFlORFJITWtsRWRHdERPVEJ2Vm5WMVVUMDkiLCJyZWZlcnJhbF9jb2RlIjoiVTBGTFpFdERSVlo2TTJodGNUZHNaMjVsUkhaS1p6MDkiLCJkZXZpY2VfdHlwZSI6IndlYiIsImRldmljZV92ZXJzaW9uIjoiQ2hyb21lIDEyMCIsImRldmljZV9tb2RlbCI6InNhZmFyaSIsInJlbW90ZV9hZGRyIjoiMjIzLjE3OC4yMTMuOTMifX0.EnOpJtXJJVlJPoekC1W3lTz77McUsy50KhTokRMH6AdZWBXgCTM6dEeamXG_B-f4GRkpHatkUAghv0yXalXHwWIGjP6_jjAp2xoqpKuefBv5G8yjb5O9axJWQ3_oSW2oTgZ2R55JGnlr5oKIpx2X3DXFFB3-33Kuul71EcgqDMfqcnK8VCK4XBYlNiAGG7UYieSuW2WLGIgyuUnM6qx6yWFQr2A0QiYINrVp0GJ5eMBNGb2aDY7w_Eh0Bfx355gfs-yNj9xJ3b9PWzdfvRSYLsoQnqDoVSKMdV8zJoGuUWe-EIpchdQW6NCtKfFr90xPrqm2ezomxrdEhMIdcT-DQg"
+
 @bot.on_message(filters.command(["cw"]))
 async def account_login(bot: Client, m: Message):
     global cancel
@@ -71,7 +73,7 @@ async def account_login(bot: Client, m: Message):
        }
     headers = {
         "Host": "elearn.crwilladmin.com",
-        "Token": "",
+        "Authorization": f"Bearer {AUTH_TOKEN}",
         "Usertype": "",
         "Appver": "1.55",
         "Apptype": "android",
