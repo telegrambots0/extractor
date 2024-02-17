@@ -59,17 +59,17 @@ async def account_login(bot: Client, m: Message):
     input01: Message = await bot.listen(editable.chat.id)
     Ins = input01.text
     editable = await m.reply_text("Send **ID & Password** in this manner otherwise bot will not respond.\n\nSend like this:-  **ID*Password**")
-    rwa_url = "https://"+Ins+"/post/login"
+    rwa_url = "https://"+Ins+"/post/userlogin"
     hdr = {"Client-Service": "Appx",
            "Auth-Key": "appxapi",
            "User-ID": "-2",
            "Authorization": "",
            "User_app_category": "",
            "Language": "en",
-           "Content-Type": "application/x-www-form-urlencoded",
-           "Content-Length": "236",
+           "Content-Type": "application/json; charset=UTF-8",
+           "Content-Length": "732",
            "Accept-Encoding": "gzip, deflate",
-           "User-Agent": "okhttp/4.9.1"
+           "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/121.0.0.0 Safari/537.36"
            }
     info = {"email": "", "password": ""}
     input1: Message = await bot.listen(editable.chat.id)
@@ -93,7 +93,7 @@ async def account_login(bot: Client, m: Message):
                 "User_app_category": "",
                 "Language": "en",
                 "Host": "lastexamapi.teachx.in",
-                "User-Agent": "okhttp/4.9.1"
+                "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/121.0.0.0 Safari/537.36"
                 }
     elif Ins == ("missionapi.appx.co.in"):
         hdr1 = {
@@ -104,7 +104,7 @@ async def account_login(bot: Client, m: Message):
                 "User_app_category": "",
                 "Language": "en",
                 "Host": "missionapi.appx.co.in",
-                "User-Agent": "okhttp/4.9.1"
+                "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/121.0.0.0 Safari/537.36"
                 }
     elif Ins == ("rozgarapinew.teachx.in"):
         hdr1 = {
@@ -115,7 +115,7 @@ async def account_login(bot: Client, m: Message):
                 "User_app_category": "",
                 "Language": "en",
                 "Host": "rozgarapinew.teachx.in",
-                "User-Agent": "okhttp/4.9.1"
+                "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/121.0.0.0 Safari/537.36"
                 }
     else:
         await editable.edit("**Header Not Valid**")
