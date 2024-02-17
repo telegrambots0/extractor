@@ -66,7 +66,7 @@ async def account_login(bot: Client, m: Message):
            "Authorization": "",
            "User_app_category": "",
            "Language": "en",
-           "Content-Type": "application/json; charset=UTF-8",
+           "Content-Type": "application/x-www-form-urlencoded",
            "Content-Length": "732",
            "Accept-Encoding": "gzip, deflate",
            "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/121.0.0.0 Safari/537.36"
