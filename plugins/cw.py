@@ -90,6 +90,7 @@ async def account_login(bot: Client, m: Message):
     input1: Message = await bot.listen(editable.chat.id)
     raw_text = input1.text
     s = requests.Session()
+    token == None
     if "*" in raw_text:
       data["email"] = raw_text.split("*")[0]
       data["password"] = raw_text.split("*")[1]
@@ -103,6 +104,10 @@ async def account_login(bot: Client, m: Message):
       else:
            await m.reply_text("go back to response")
       await m.reply_text(f"```{token}```")
+      else:
+            error_message = f"Login request failed with status code {response.status_code}: {response.text}"
+            print(error_message)  # Add logging
+            await m.reply_text(error_message)
     else:
       token = raw_text.strip()
     html1 = s.get("https://elearn.crwilladmin.com/api/v1/comp/my-batch?&token=" + token).json()
