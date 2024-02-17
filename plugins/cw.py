@@ -74,13 +74,13 @@ async def account_login(bot: Client, m: Message):
     headers = {
         "Host": "elearn.crwilladmin.com",
         "Token": "",
-        "Usertype": "",
+        "Usertype": "2",
         "Appver": "1.80",
         "Apptype": "android",
-        "Content-Type": "application/x-www-form-urlencoded",
-        "Content-Length": "96",
+        "Content-Type": "application/json; charset=UTF-8",
+        "Content-Length": "313",
         "Accept-Encoding": "gzip, deflate",
-        "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/121.0.0.0 Safari/537.36",
+        "user-agent": "okhttp/5.0.0-alpha.2",
         'Connection': 'Keep-Alive'
        }
     editable = await m.reply_text("Send **ID & Password** in this manner otherwise bot will not respond.\n\nSend like this:-  **ID*Password** \n or \nSend **TOKEN** like This this:-  **TOKEN**" )
