@@ -59,7 +59,7 @@ async def account_login(bot: Client, m: Message):
     global cancel
     cancel = False
 
-    url = "https://elearn.crwilladmin.com/api/v5/login-other"
+    url = "https://elearn.crwilladmin.com/api/v1/login-other"
     data = {
         "deviceType": "android",
         "password": "",
@@ -74,9 +74,9 @@ async def account_login(bot: Client, m: Message):
         "Token": "",
         "Usertype": "",
         "Appver": "1.55",
-        "Apptype": "web",
-        "Content-Type": "application/x-www-form-urlencoded",
-        "Content-Length": "96",
+        "Apptype": "android",
+        "Content-Type": "application/json; charset=UTF-8",
+        "Content-Length": "313",
         "Accept-Encoding": "gzip, deflate",
         "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/116.0.0.0 Safari/537.36 2",
         'Connection': 'Keep-Alive'
@@ -105,7 +105,7 @@ async def account_login(bot: Client, m: Message):
       await m.reply_text(f"```{token}```")
     else:
       token = raw_text.strip()
-    html1 = s.get("https://elearn.crwilladmin.com/api/v5/comp/my-batch?&token=" + token).json()
+    html1 = s.get("https://elearn.crwilladmin.com/api/v1/comp/my-batch?&token=" + token).json()
     topicid = html1["data"]["batchData"]
     cool=""
     for data in topicid:
