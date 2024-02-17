@@ -90,6 +90,7 @@ async def account_login(bot: Client, m: Message):
     input1: Message = await bot.listen(editable.chat.id)
     raw_text = input1.text
     s = requests.Session()
+    token == None
     if "*" in raw_text:
       data["email"] = raw_text.split("*")[0]
       data["password"] = raw_text.split("*")[1]
