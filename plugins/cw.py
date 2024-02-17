@@ -100,14 +100,11 @@ async def account_login(bot: Client, m: Message):
       if response.status_code == 200:
           data = response.json()
           token = data["data"]["token"]
-          await m.reply_text(token)
+          await m.reply_text(f"```{token}```")
       else:
-           await m.reply_text("go back to response")
-      await m.reply_text(f"```{token}```")
-      else:
-            error_message = f"Login request failed with status code {response.status_code}: {response.text}"
-            print(error_message)  # Add logging
-            await m.reply_text(error_message)
+          error_message = f"Login request failed with status code {response.status_code}: {response.text}"
+          print(error_message)  # Add logging
+          await m.reply_text(error_message)
     else:
       token = raw_text.strip()
     html1 = s.get("https://elearn.crwilladmin.com/api/v1/comp/my-batch?&token=" + token).json()
