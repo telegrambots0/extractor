@@ -75,7 +75,7 @@ async def account_login(bot: Client, m: Message):
         "Usertype": "",
         "Appver": "1.80",
         "Apptype": "android",
-        "Content-Type": "application/json; charset=UTF-8",
+        "Content-Type": "application/json; charset=utf-8",
         "Content-Length": "313",
         "Accept-Encoding": "gzip, deflate",
         "user-agent": "okhttp/5.0.0-alpha.2",
