@@ -72,13 +72,13 @@ async def account_login(bot: Client, m: Message):
     headers = {
         "Host": "elearn.crwilladmin.com",
         "Token": "",
-        "Usertype": "",
+        "Usertype": "2",
         "Appver": "1.80",
         "Apptype": "android",
         "Content-Type": "application/json; charset=utf-8",
-        "Content-Length": "313",
+        "Content-Length": "96",
         "Accept-Encoding": "gzip, deflate",
-        "user-agent": "okhttp/5.0.0-alpha.2",
+        "user-agent": "Mozilla/5.0 (Linux; Android 10; SM-J810G) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/121.0.6167.164 Mobile Safari/537.36",
         'Connection': 'Keep-Alive'
        }
     #proxy_host = ['47.254.153.200:80']
@@ -90,7 +90,7 @@ async def account_login(bot: Client, m: Message):
     input1: Message = await bot.listen(editable.chat.id)
     raw_text = input1.text
     s = requests.Session()
-    token == None
+    token == "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJpYXQiOjE3MDgxODM0ODQsImNvbiI6eyJpc0FkbWluIjpmYWxzZSwiYXVzZXIiOiJVMFZ6TkdGU2NuQlZjR3h5TkZwV09FYzBURGxOZHowOSIsImlkIjoiZFhwRGJqaFdURUZLVXk5ckwwSmhPV3BSTldocWR6MDkiLCJmaXJzdF9uYW1lIjoiTm05cWRXRnFjbEpxSzA5eU5WTnFMekEzT1VNNVVUMDkiLCJlbWFpbCI6IlpIUXJhVWxYU0RaRmJqRXZiV2w2TUhSak5ucEZLekZNTldoTk5VdzNNVlppYW5CWVdXSXJaVmt5TUQwPSIsInBob25lIjoiVDNWS1JYaFlORFJITWtsRWRHdERPVEJ2Vm5WMVVUMDkiLCJyZWZlcnJhbF9jb2RlIjoiVTBGTFpFdERSVlo2TTJodGNUZHNaMjVsUkhaS1p6MDkiLCJkZXZpY2VfdHlwZSI6IndlYiIsImRldmljZV92ZXJzaW9uIjoiQ2hyb21lIDEyMSIsImRldmljZV9tb2RlbCI6InNhZmFyaSIsInJlbW90ZV9hZGRyIjoiMjIzLjE3OC4yMDkuMzgifX0.JrlZo9RbDaEicV7DGBoOo234hbxxcJnr7ngbrDHYqmxFmW5gRTFDs8222W7Qftg-XQFfwBNq7LZwDSfIdfmYp6CQTMjCfuXjgwtrIalO3DUDVViE-0UDwwPeGp4qxbgAZeZqBsFu5TVQTsunzbgzdx7IfJbYleQvg7Nmkv8iLep7-RHaax9G9T-DE_eZYk6OgRJpGoMWpHceDK6s1D0BqwrIGkcn9j1PVudJbIHeqm-Mu64Y1nSQanSVVdk0_P0erszrTt166NQ3G2vtsF42TgcXiU4SZbEyuiXcAzMZaCvveA164T0GeT5nraylz6ajeAyibo3PRhO2ebCwTOd2RA"
     if "*" in raw_text:
       data["email"] = raw_text.split("*")[0]
       data["password"] = raw_text.split("*")[1]
