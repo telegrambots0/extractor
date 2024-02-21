@@ -62,35 +62,34 @@ async def account_login(bot: Client, m: Message):
     url = "https://elearn.crwilladmin.com/api/v5/login-other"
     data = {
         "deviceType": "android",
-        "password": "",
+        "password": "Rohit@123",
         "deviceIMEI": "08750aa91d7387ab",
-        "deviceModel": "Realme RMX2001",
+        "deviceModel": "Google sdk_gphone_x86",
         "deviceVersion": "R(Android 11.0)",
         "email": "",
-        "deviceToken": "fYdfgaUaQZmYP7vV4r2rjr:APA91bFPn3Z4m_YS8kYQSthrueUh-lyfxLghL9ka-MT0m_4TRtlUu7cy90L8H6VbtWorg95Car6aU9zjA-59bZypta9GNNuAdUxTnIiGFxMCr2G3P4Gf054Kdgwje44XWzS9ZGa4iPZh"
+        "deviceToken": "e-vGpi82QmOcr0-twQikSD:APA91bFkMLCTwHnENgYIEvwyeOXsc0j7YXCkJleB76Swv2Z0-Bf6nb2sAAeCPk8lDz79RX_qv2jCQHFzrbOTiWg1lXa4r724v9NSqyP144Sk0Gqa-XLSPM7IQb31UfZzF7P5V0TLXIJU"
        }
     headers = {
         "Host": "elearn.crwilladmin.com",
-        "Token": "",
+        "Token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJpYXQiOjE3MDg1Mzk5MzYsImNvbiI6eyJpc0FkbWluIjpmYWxzZSwiYXVzZXIiOiJVMFZ6TkdGU2NuQlZjR3h5TkZwV09FYzBURGxOZHowOSIsImlkIjoiZFhwRGJqaFdURUZLVXk5ckwwSmhPV3BSTldocWR6MDkiLCJmaXJzdF9uYW1lIjoiTm05cWRXRnFjbEpxSzA5eU5WTnFMekEzT1VNNVVUMDkiLCJlbWFpbCI6IlpIUXJhVWxYU0RaRmJqRXZiV2w2TUhSak5ucEZLekZNTldoTk5VdzNNVlppYW5CWVdXSXJaVmt5TUQwPSIsInBob25lIjoiVDNWS1JYaFlORFJITWtsRWRHdERPVEJ2Vm5WMVVUMDkiLCJyZWZlcnJhbF9jb2RlIjoiVTBGTFpFdERSVlo2TTJodGNUZHNaMjVsUkhaS1p6MDkiLCJkZXZpY2VfdHlwZSI6ImFuZHJvaWQiLCJkZXZpY2VfdmVyc2lvbiI6IlIoQW5kcm9pZCAxMS4wKSIsImRldmljZV9tb2RlbCI6Ikdvb2dsZSBzZGtfZ3Bob25lX3g4NiIsInJlbW90ZV9hZGRyIjoiMjIzLjE3OC4yMTMuNTQifX0.DUwvVT6ar1NqmYczhsT6Ijn35bPVn1HfenNuBLUk9tnX8wzDcwuFGcktpXBnYwkYgocA95_8SR3UB-oXZkXu_4hDYmN84GGunicDyrSed8OTcE-z7j_iD6as9HkWX9FiOEBL8mcDsen5XXtMFNeKdHCcPCjPzq2P9FfaztifFIi-2usm6w9jNHuq6mYk8etEIKIlWVh0giEdf_jHRjiX36bfNzNN3PIfWjnZyixK0z_1oeIUDGAC6CITTD53o5PlhlDnbPKnQeyOixFzWdOvZUPllBgfIqltNhwaM83BHQPOwtcne18SfnIRWQEVRBK4wVOu0Y-GKZ89NpzFfVM4XQ",
         "Usertype": "2",
-        "Appver": "1.80",
+        "Appver": "84",
         "Apptype": "android",
         "Content-Type": "application/json; charset=utf-8",
-        "Content-Length": "96",
+        "Content-Length": "352",
         "Accept-Encoding": "gzip, deflate",
-        "user-agent": "Mozilla/5.0 (Linux; Android 10; SM-J810G) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/121.0.6167.164 Mobile Safari/537.36",
+        "user-agent": "okhttp/5.0.0-alpha",
         'Connection': 'Keep-Alive'
        }
-    #proxy_host = ['47.254.153.200:80']
-    #proxies = {
-     #       'https': proxy_host,
-     #       'http': proxy_host,
-     #   }
+     proxy_host = ['104.26.3.116']
+     proxies = {
+             'https': proxy_host,
+             'http': proxy_host,
+         }
     editable = await m.reply_text("Send **ID & Password** in this manner otherwise bot will not respond.\n\nSend like this:-  **ID*Password** \n or \nSend **TOKEN** like This this:-  **TOKEN**" )
     input1: Message = await bot.listen(editable.chat.id)
     raw_text = input1.text
     s = requests.Session()
-    token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJpYXQiOjE3MDg0NTQ0MjUsImNvbiI6eyJpc0FkbWluIjpmYWxzZSwiYXVzZXIiOiJVMFZ6TkdGU2NuQlZjR3h5TkZwV09FYzBURGxOZHowOSIsImlkIjoiZFhwRGJqaFdURUZLVXk5ckwwSmhPV3BSTldocWR6MDkiLCJmaXJzdF9uYW1lIjoiTm05cWRXRnFjbEpxSzA5eU5WTnFMekEzT1VNNVVUMDkiLCJlbWFpbCI6IlpIUXJhVWxYU0RaRmJqRXZiV2w2TUhSak5ucEZLekZNTldoTk5VdzNNVlppYW5CWVdXSXJaVmt5TUQwPSIsInBob25lIjoiVDNWS1JYaFlORFJITWtsRWRHdERPVEJ2Vm5WMVVUMDkiLCJyZWZlcnJhbF9jb2RlIjoiVTBGTFpFdERSVlo2TTJodGNUZHNaMjVsUkhaS1p6MDkiLCJkZXZpY2VfdHlwZSI6IndlYiIsImRldmljZV92ZXJzaW9uIjoiQ2hyb21lIDY5IiwiZGV2aWNlX21vZGVsIjoiY2hyb21lIiwicmVtb3RlX2FkZHIiOiIyMjMuMTc4LjIxMi4xMCJ9fQ.oup_cMk57epDjq6di-xytnv_xISel7Q4CwO9WC6-tB_wwj-efXoZWuWzogXd17Xbj_pt4W097WRaRk3rQ9ziJ_ELG0F6BGWwlBt4RtsLGk6EwFp6zyoFoHDgvAnIpaNdPew3Roi8JGZtakwMkR33_QogaXLRPnfJKgbSglkeV-MBxGe2K4VLBjsgHhFWXR2E_RsT9xDusCXk3dDY7MKH_EgJR8PS0j1BRmTwQ6tL8RZNZFefOYfvk96b4rT7ZRD3aXYN2yTixXSuAFD-RHDHjJDy6PO7NrQ6HQRHOy20ZKDYPz5JCWrJVkOcHgHRxwqOg0-i07wreuNtLC_tie1C1"
     if "*" in raw_text:
       data["email"] = raw_text.split("*")[0]
       data["password"] = raw_text.split("*")[1]
