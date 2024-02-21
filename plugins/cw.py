@@ -66,7 +66,7 @@ async def account_login(bot: Client, m: Message):
         "deviceIMEI": "08750aa91d7387ab",
         "deviceModel": "Google sdk_gphone_x86",
         "deviceVersion": "R(Android 11.0)",
-        "email": "",
+        "email": "7488438311",
         "deviceToken": "e-vGpi82QmOcr0-twQikSD:APA91bFkMLCTwHnENgYIEvwyeOXsc0j7YXCkJleB76Swv2Z0-Bf6nb2sAAeCPk8lDz79RX_qv2jCQHFzrbOTiWg1lXa4r724v9NSqyP144Sk0Gqa-XLSPM7IQb31UfZzF7P5V0TLXIJU"
        }
     headers = {
