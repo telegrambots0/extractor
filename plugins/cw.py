@@ -62,11 +62,11 @@ async def account_login(bot: Client, m: Message):
     url = "https://elearn.crwilladmin.com/api/v5/login-other"
     data = {
         "deviceType": "android",
-        "password": "",
+        "password": "Rohit@123",
         "deviceIMEI": "08750aa91d7387ab",
         "deviceModel": "Google sdk_gphone_x86",
         "deviceVersion": "R(Android 11.0)",
-        "email": "",
+        "email": "7488438311",
         "deviceToken": "e-vGpi82QmOcr0-twQikSD:APA91bFkMLCTwHnENgYIEvwyeOXsc0j7YXCkJleB76Swv2Z0-Bf6nb2sAAeCPk8lDz79RX_qv2jCQHFzrbOTiWg1lXa4r724v9NSqyP144Sk0Gqa-XLSPM7IQb31UfZzF7P5V0TLXIJU"
        }
     headers = {
@@ -92,6 +92,7 @@ async def account_login(bot: Client, m: Message):
     input1: Message = await bot.listen(editable.chat.id)
     raw_text = input1.text
     s = requests.Session()
+    token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJpYXQiOjE3MDg1Mzk5MzYsImNvbiI6eyJpc0FkbWluIjpmYWxzZSwiYXVzZXIiOiJVMFZ6TkdGU2NuQlZjR3h5TkZwV09FYzBURGxOZHowOSIsImlkIjoiZFhwRGJqaFdURUZLVXk5ckwwSmhPV3BSTldocWR6MDkiLCJmaXJzdF9uYW1lIjoiTm05cWRXRnFjbEpxSzA5eU5WTnFMekEzT1VNNVVUMDkiLCJlbWFpbCI6IlpIUXJhVWxYU0RaRmJqRXZiV2w2TUhSak5ucEZLekZNTldoTk5VdzNNVlppYW5CWVdXSXJaVmt5TUQwPSIsInBob25lIjoiVDNWS1JYaFlORFJITWtsRWRHdERPVEJ2Vm5WMVVUMDkiLCJyZWZlcnJhbF9jb2RlIjoiVTBGTFpFdERSVlo2TTJodGNUZHNaMjVsUkhaS1p6MDkiLCJkZXZpY2VfdHlwZSI6ImFuZHJvaWQiLCJkZXZpY2VfdmVyc2lvbiI6IlIoQW5kcm9pZCAxMS4wKSIsImRldmljZV9tb2RlbCI6Ikdvb2dsZSBzZGtfZ3Bob25lX3g4NiIsInJlbW90ZV9hZGRyIjoiMjIzLjE3OC4yMTMuNTQifX0.DUwvVT6ar1NqmYczhsT6Ijn35bPVn1HfenNuBLUk9tnX8wzDcwuFGcktpXBnYwkYgocA95_8SR3UB-oXZkXu_4hDYmN84GGunicDyrSed8OTcE-z7j_iD6as9HkWX9FiOEBL8mcDsen5XXtMFNeKdHCcPCjPzq2P9FfaztifFIi-2usm6w9jNHuq6mYk8etEIKIlWVh0giEdf_jHRjiX36bfNzNN3PIfWjnZyixK0z_1oeIUDGAC6CITTD53o5PlhlDnbPKnQeyOixFzWdOvZUPllBgfIqltNhwaM83BHQPOwtcne18SfnIRWQEVRBK4wVOu0Y-GKZ89NpzFfVM4XQ"
     if "*" in raw_text:
       data["email"] = raw_text.split("*")[0]
       data["password"] = raw_text.split("*")[1]
@@ -103,8 +104,7 @@ async def account_login(bot: Client, m: Message):
           token = data["data"]["token"]
           await m.reply_text(token)
       else:
-           await m.reply_text("go back to response")
-      token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJpYXQiOjE3MDg1Mzk5MzYsImNvbiI6eyJpc0FkbWluIjpmYWxzZSwiYXVzZXIiOiJVMFZ6TkdGU2NuQlZjR3h5TkZwV09FYzBURGxOZHowOSIsImlkIjoiZFhwRGJqaFdURUZLVXk5ckwwSmhPV3BSTldocWR6MDkiLCJmaXJzdF9uYW1lIjoiTm05cWRXRnFjbEpxSzA5eU5WTnFMekEzT1VNNVVUMDkiLCJlbWFpbCI6IlpIUXJhVWxYU0RaRmJqRXZiV2w2TUhSak5ucEZLekZNTldoTk5VdzNNVlppYW5CWVdXSXJaVmt5TUQwPSIsInBob25lIjoiVDNWS1JYaFlORFJITWtsRWRHdERPVEJ2Vm5WMVVUMDkiLCJyZWZlcnJhbF9jb2RlIjoiVTBGTFpFdERSVlo2TTJodGNUZHNaMjVsUkhaS1p6MDkiLCJkZXZpY2VfdHlwZSI6ImFuZHJvaWQiLCJkZXZpY2VfdmVyc2lvbiI6IlIoQW5kcm9pZCAxMS4wKSIsImRldmljZV9tb2RlbCI6Ikdvb2dsZSBzZGtfZ3Bob25lX3g4NiIsInJlbW90ZV9hZGRyIjoiMjIzLjE3OC4yMTMuNTQifX0.DUwvVT6ar1NqmYczhsT6Ijn35bPVn1HfenNuBLUk9tnX8wzDcwuFGcktpXBnYwkYgocA95_8SR3UB-oXZkXu_4hDYmN84GGunicDyrSed8OTcE-z7j_iD6as9HkWX9FiOEBL8mcDsen5XXtMFNeKdHCcPCjPzq2P9FfaztifFIi-2usm6w9jNHuq6mYk8etEIKIlWVh0giEdf_jHRjiX36bfNzNN3PIfWjnZyixK0z_1oeIUDGAC6CITTD53o5PlhlDnbPKnQeyOixFzWdOvZUPllBgfIqltNhwaM83BHQPOwtcne18SfnIRWQEVRBK4wVOu0Y-GKZ89NpzFfVM4XQ"
+          await m.reply_text("go back to response")
       await m.reply_text(f"```{token}```")
     else:
       token = raw_text
