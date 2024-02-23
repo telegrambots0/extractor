@@ -10,17 +10,17 @@
     "env": {
             "API_ID": {
             "description": "Your API_ID from https://my.telegram.org/apps",
-            "value": "23282918",
+            "value": "15816419",
             "required": true
         },
         "API_HASH": {
             "description": "Your API_HASH from https://my.telegram.org/apps",       
-            "value": "ccf2a6664d1ae478b8c556000f616120",
+            "value": "626ed6dab78881858778d9663682962e",
             "required": true
         },
         "BOT_TOKEN": {
             "description": "Your Bot token from @Botfather",
-            "value": "6941983097:AAGciD0zqHUa9OBY5xLbImM7AKLE_dDlDVk",
+            "value": "6415777909:AAE72fd1b1GVkICgNRll8OvHhplORD_57qg",
             "required": true
         }
     }
