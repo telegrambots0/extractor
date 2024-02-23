@@ -67,7 +67,7 @@ async def account_login(bot: Client, m: Message):
         "deviceModel": "",
         "deviceVersion": "R(Android 11.0)",
         "email": "rohitrkr7652607@gmail.com",
-        "deviceToken": "e-vGpi82QmOcr0-twQikSD:APA91bFkMLCTwHnENgYIEvwyeOXsc0j7YXCkJleB76Swv2Z0-Bf6nb2sAAeCPk8lDz79RX_qv2jCQHFzrbOTiWg1lXa4r724v9NSqyP144Sk0Gqa-XLSPM7IQb31UfZzF7P5V0TLXIJU"
+        "deviceToken": ""
        }
     headers = {
         "Host": "elearn.crwilladmin.com",
@@ -105,10 +105,10 @@ async def account_login(bot: Client, m: Message):
           await m.reply_text(token)
       else:
           await m.reply_text("go back to response")
-      await m.reply_text(f"Here is your \n```{token}```")
+      await m.reply_text(f"Here is your ```{token}```")
     else:
       token = raw_text
-    html1 = s.get("https://elearn.crwilladmin.com/api/v5/comp/my-batch?&token=" + token).json()
+    html1 = s.get("https://elearn.crwilladmin.com/api/v5/comp/my-batch?&token="+token).json()
     topicid = html1["data"]["batchData"]
     cool=""
     for data in topicid:
