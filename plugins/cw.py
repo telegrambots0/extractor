@@ -50,63 +50,65 @@ from Crypto.Util.Padding import unpad
 from base64 import b64encode, b64decode
 
 ACCOUNT_ID = "6206459123001"
-BCOV_POLICY = "BCpkADawqM1474MvKwYlMRZNBPoqkJY-UWm7zE1U769d5r5kqTjG0v8L-THXuVZtdIQJpfMPB37L_VJQxTKeNeLO2Eac_yMywEgyV9GjFDQ2LTiT4FEiHhKAUvdbx9ku6fGnQKSMB8J5uIDd"
+BCOV_POLICY = "BCpkADawqM22pe6lllPFfUMQfj47agK1PJ_Sb3P_jty9S9_yCNwT87DTolChZKFm091O3K6UCQ61qHUHBgJg811eub1T1Bqn2HHYPkGrrknKaHDgj-ofQZnWBUZJNMaKHfDFd5HoVbeQtqEgVDJHMO9Oq7q5YLIaX9MYaaDreXLDWkxzVvrng6HXTz3whbyoYzOv_4bks3_8HOqCcqkbQL6XZehh398zRw6zPjO42okH0WoX-KNmjcICMpg"
 bc_url = (f"https://edge.api.brightcove.com/playback/v1/accounts/{ACCOUNT_ID}/videos")
 bc_hdr = {"BCOV-POLICY": BCOV_POLICY}
 
-@bot.on_message(filters.command(["cw"])& ~filters.edited)
+@bot.on_message(filters.command(["cw"]))
 async def account_login(bot: Client, m: Message):
     global cancel
     cancel = False
 
-    url = "https://elearn.crwilladmin.com/api/v1/login-other//"
+    url = "https://elearn.crwilladmin.com/api/v5/login-other"
     data = {
         "deviceType": "android",
-        "password": "",
-        "deviceIMEI": "08750aa91d7387ab",
-        "deviceModel": "Realme RMX2001",
+        "password": "Rohit@123",
+        "deviceIMEI": "",
+        "deviceModel": "",
         "deviceVersion": "R(Android 11.0)",
-        "email": "",
-        "deviceToken": "fYdfgaUaQZmYP7vV4r2rjr:APA91bFPn3Z4m_YS8kYQSthrueUh-lyfxLghL9ka-MT0m_4TRtlUu7cy90L8H6VbtWorg95Car6aU9zjA-59bZypta9GNNuAdUxTnIiGFxMCr2G3P4Gf054Kdgwje44XWzS9ZGa4iPZh"
+        "email": "rohitrkr7652607@gmail.com",
+        "deviceToken": ""
        }
     headers = {
         "Host": "elearn.crwilladmin.com",
         "Token": "",
         "Usertype": "",
-        "Appver": "1.55",
+        "Appver": "84",
         "Apptype": "android",
-        "Content-Type": "application/json; charset=UTF-8",
-        "Content-Length": "313",
+        "Content-Type": "application/json; charset=utf-8",
+        "Content-Length": "352",
         "Accept-Encoding": "gzip, deflate",
-        "user-agent": "okhttp/5.0.0-alpha.2",
+        "user-agent": "okhttp/5.0.0-alpha",
         'Connection': 'Keep-Alive'
-       }
-    proxy_host = ['47.254.153.200:80']
+    }
+    
+    proxy_host = ['104.26.3.116']
+    
     proxies = {
-           'https': proxy_host,
-           'http': proxy_host,
-       }
+       'https': proxy_host,
+       'http': proxy_host,
+    }
     editable = await m.reply_text("Send **ID & Password** in this manner otherwise bot will not respond.\n\nSend like this:-  **ID*Password** \n or \nSend **TOKEN** like This this:-  **TOKEN**" )
-    input1: Message = await bot.listen(editable.chat.id)
+    input1:message=await bot.listen(editable.chat.id)
     raw_text = input1.text
     s = requests.Session()
+    data={}
     if "*" in raw_text:
       data["email"] = raw_text.split("*")[0]
       data["password"] = raw_text.split("*")[1]
       await input1.delete(True)
-      s = requests.Session()
+      #s = requests.Session()
       response = s.post(url = url, headers=headers, json=data, timeout=10)
       if response.status_code == 200:
           data = response.json()
           token = data["data"]["token"]
           await m.reply_text(token)
       else:
-           await m.reply_text("go back to response")
-      #token = "4ffd1627981589c0a1261f7a114fbbf8bc87c6d9"
-      await m.reply_text(f"```{token}```")
+          await m.reply_text("go back to response")
+      await m.reply_text(f"Here is your ```{token}```")
     else:
       token = raw_text
-    html1 = s.get("https://elearn.crwilladmin.com/api/v1/comp/my-batch?&token=" + token).json()
+    html1 = s.get("https://elearn.crwilladmin.com/api/v5/comp/my-batch?&token=" + token).json()
     topicid = html1["data"]["batchData"]
     cool=""
     for data in topicid:
@@ -122,7 +124,7 @@ async def account_login(bot: Client, m: Message):
     editable1= await m.reply_text("**Now send the Batch ID to Download**")
     input2 = message = await bot.listen(editable.chat.id)
     raw_text2 = input2.text
-    html2 = s.get("https://elearn.crwilladmin.com/api/v1/comp/batch-topic/"+raw_text2+"?type=class&token="+token).json()
+    html2 = s.get("https://elearn.crwilladmin.com/api/v5/comp/batch-topic/"+raw_text2+"?type=class&token="+token).json()
     topicid = html2["data"]["batch_topic"]
     bn = html2["data"]["batch_detail"]["name"]
     vj=""
